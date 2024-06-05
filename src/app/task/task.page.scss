@@ -1,0 +1,54 @@
+.input {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  select{
+    background-color: white;
+    margin-left: 10px;
+  }
+  input {
+    margin-left: 10px;
+    background-color: white;
+  }
+  span {
+    margin-right: 10px;
+  }
+}
+
+
+.articles {
+  width: 100%;
+  .article {
+    border-top: 1px solid var(--placeholder-gray);
+    min-height: 76px;
+
+    .name {
+      span {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        color: var(--dark-background);
+      }
+      img.rotated {
+        transform: rotate(180deg);
+      }
+    }
+
+    .info {
+      span {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.44444;
+        color: var(--light-gray);
+      }
+    }
+  }
+  .article:last-child {
+    border-bottom: 1px solid var(--placeholder-gray);
+  }
+}

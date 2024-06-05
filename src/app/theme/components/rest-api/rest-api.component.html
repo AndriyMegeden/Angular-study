@@ -1,0 +1,35 @@
+<!-- book.component.html -->
+<div class="inputs-requests">
+  <span style="color: blue;">Додавання книжки в базу даних</span>
+  <label for="title">Title:</label>
+  <input type="text" id="title" [(ngModel)]="bookData.title" />
+
+  <label for="author">Author:</label>
+  <input type="text" id="author" [(ngModel)]="bookData.author" />
+
+  <label for="pages">Pages:</label>
+  <input type="number" id="pages" [(ngModel)]="bookData.pages" />
+
+  <label for="rating">Rating:</label>
+  <input type="number" id="rating" [(ngModel)]="bookData.rating" />
+
+
+  <ion-button (click)="addBook()">Add Book</ion-button>
+</div>
+<span style="color: blue;">Видалення книжки з бази даних</span>
+<div style="display: flex; align-items: center;">
+ 
+  <label for="bookId">Enter Book ID:</label>
+  <input [(ngModel)]="bookId" id="bookId" placeholder="Enter Book ID" style="background-color: rgb(203, 203, 198); "  />
+
+  <ion-button (click)="deleteBook()">Delete Book</ion-button>
+</div>
+
+<span style="color: blue;">Виводить дані про книжки з бд: заголовок, автора, id</span>
+<div>
+  <ion-button (click)="getAllBooks()">Get All Books</ion-button>
+
+  <div *ngFor="let book of books">
+    {{ book.title }} by {{ book.author }} {{book._id}}
+  </div>
+</div>

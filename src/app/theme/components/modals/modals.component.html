@@ -1,0 +1,47 @@
+<div class="modal-form">
+  <div class="modal-background" *ngIf="isOpen"></div>
+  <!-- відображаєм модалку по певному типу -->
+  <ng-container *ngIf="isOpen && modalType === 'contact'">
+    <div class="modal-content">
+      <div class="title p-lr-15 d-flex justify-space-between align-center">
+        <span>Download Contact Details</span>
+        <img (click)="closeModal()" src="/assets/icon/close-modal.svg" alt="" />
+      </div>
+      <div class="form p-50 sm-p-20">
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Email" type="text" />
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Mobile Number" type="text" />
+        </div>
+        <button class="general">DOWNLOAD</button>
+      </div>
+    </div>
+  </ng-container>
+   <!-- відображаєм модалку по певному типу -->
+  <ng-container *ngIf="isOpen && modalType === 'successfull'">
+    <div class="modal-content successfull-modal">
+      <div class="title p-lr-15 d-flex justify-space-between align-center">
+        <span>Download Contact Details</span>
+        <img (click)="closeModal()" src="/assets/icon/close-modal.svg" alt="" />
+      </div>
+
+      <div class="form p-50 sm-p-20">
+        <div class="successfull d-flex justify-center align-center m-b-30">
+          <img class="m-r-16" src="/assets/svg/modal-done.svg" alt="" />
+          <span>OTP sent to your mobile successfully!</span>
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Email" type="text" />
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Mobile Number" type="text" />
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Enter the OTP" type="text" />
+        </div>
+        <button class="general">DOWNLOAD</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

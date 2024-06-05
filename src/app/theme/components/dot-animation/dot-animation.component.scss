@@ -1,0 +1,20 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .punkt-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .punkt {
+      .background {
+        background-color: rgb(255, 247, 0);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 1px;
+        margin-top: 1px;
+      }
+    }
+  }
+}

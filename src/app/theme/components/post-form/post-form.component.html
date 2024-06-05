@@ -1,0 +1,20 @@
+<div class="ion-padding-start" >
+  <ion-input label="Title" placeholder="Enter Title" [(ngModel)]="title" #titleInput></ion-input>
+</div>
+
+<div class="ion-padding-start">
+  <ion-input label="Text" placeholder="Enter Text" [(ngModel)]="text"></ion-input>
+</div>
+
+
+<div class="ion-padding-start">
+  <ion-input label="id" placeholder="Enter id" [(ngModel)]="id"></ion-input>
+</div>
+
+
+
+<div style="display: flex; flex-direction: row; align-items: center;">
+  <ion-button (click)="addPost()">Add Post</ion-button>
+  <ion-button (click)="focusTitle()" >Focuse Title</ion-button>
+  <ion-card-title>Напис знаходиться в post-form.component</ion-card-title>  
+</div>

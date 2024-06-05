@@ -1,0 +1,29 @@
+<!-- для того шоб добавити цей компонент через ng-container на різні сторінки нам треба задати назву navbar. 
+  В navbar.ts додати код @Input() public navbar: boolean = false; показує чи відображається елемент.
+  Потім в модулі ми  declarations: [NavbarComponent], exports: [NavbarComponent], наш компонент і вже потім imports наш
+   модуль в якому цей компонент і потім на сторінці html прописуєм <app-navbar [navbar]="true"></app-navbar> шоб відображати елемент.
+   і в нашому випадку шоб це працювало в модуль куди ми declarations: [NavbarComponent], exports: [NavbarComponent],
+    треба ше imports: [ RouterModule ], тому що навігація між сторінками
+-->
+
+<ng-container *ngIf="navbar">
+  <ul style="display: flex; justify-content: space-around; width: 1000px">
+    <li><a routerLink="/auth-page">auth</a></li>
+    <li><a routerLink="/text-page">text</a></li>
+    <li><a routerLink="/modals-page">modals</a></li>
+    <li><a routerLink="/task">task</a></li>
+    <li><a routerLink="/animation">animation</a></li>
+    <li style="display: flex; flex-direction: column">
+      <a routerLink="/post">post</a>
+      <!-- повідомлення показується якшо користувач не авторизований -->
+      <div *ngIf="!isAuth" style="color: red">авторизуйтесь</div>
+    </li>
+    <li style="display: flex; flex-direction: column">
+      <a routerLink="/directives">directives</a>
+      <div *ngIf="!isAuth" style="color: red">авторизуйтесь</div>
+    </li>
+    <li><a routerLink="/pipes-numbers">pipes-numbers</a></li>
+    <li><a routerLink="/home">home</a></li>
+    <li><ng-content></ng-content></li>
+  </ul>
+</ng-container>

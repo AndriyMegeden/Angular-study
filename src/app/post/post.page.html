@@ -1,0 +1,30 @@
+<app-navbar [navbar]="true"></app-navbar>
+<div class="wrap">
+  <div class="content">
+    <app-post-form (onAdd)="updatePosts($event)"></app-post-form>
+
+    <div class="hr"></div>
+    <!-- (onRemove)="removePost($event)" це потрібно для видалення поста -->
+    <app-post-card
+      *ngFor="let post of posts"
+      [post]="post"
+      (onRemove)="removePost($event)"
+    >
+      <!-- провіряємо чи длінний пост чи короткий і виводимо знизу в пості.
+      Для цього створили теги small. Якщо длінна більше 10 символів,
+       Пост Длинний інакше Пост Короткий і виводимо напис через
+       <ng-content></ng-content> у файлі post-card.html-->
+
+      <!--  <div #info> потрібен для доступу до цього html коду
+         і в post-card.ts потрібен декоратор @ContentChild()-->
+      <div #info>
+        <small *ngIf="post.text.length > 10; else short">Пост Длинний</small>
+        <ng-template #short>
+          <small>Пост Короткий</small>
+        </ng-template>
+      </div>
+    </app-post-card>
+    
+  </div>
+</div>
+ 

@@ -1,0 +1,40 @@
+<app-navbar [navbar]="true"></app-navbar>
+<div class="d-flex align-center">
+  <ion-button (click)="toggle = !toggle">change</ion-button>
+</div>
+<!-- робота з  ngSwitch-->
+<ng-container [ngSwitch]="toggle">
+  <div class="m-b-20" class="d-flex flex-d-col" style="width: 400px">
+    <input
+      *ngSwitchCase="true"
+      class="m-b-10"
+      placeholder="username"
+      type="text"
+    />
+    <input class="m-b-10" placeholder="email" type="text" />
+    <input class="m-b-10" placeholder="password" type="password" />
+    <input *ngSwitchCase="true" placeholder="password repeat" type="password" />
+    <ion-button *ngSwitchCase="true">Register</ion-button>
+    <ion-button *ngSwitchCase="false">Login</ion-button>
+  </div>
+</ng-container>
+
+<!-- робота з  *ngIf else-->
+<div class="w-100 d-flex align-end flex-d-col">
+  <ion-button style="width: 150px" (click)="switcher = !switcher"
+    >*ngIf else</ion-button
+  >
+
+  <p
+    *ngIf="switcher; else paragraph2"
+    style="background-color: blue; width: 200px; color: white"
+  >
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, porro.
+  </p>
+
+  <ng-template #paragraph2>
+    <p style="background-color: red; width: 200px; color: white">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+  </ng-template>
+</div>

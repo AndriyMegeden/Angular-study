@@ -1,0 +1,8 @@
+
+
+<!-- тут ми зєднуємо копонент з 2 модалками і компонент з кнопками і робимо так шоб по кліку на кожну кнопку вилазила окрема модалка -->
+
+<app-navbar [navbar]="true"></app-navbar>
+<!-- шоб отримати тип модалки -->
+<app-button-modal (openModalEvent)="openModal($event)"></app-button-modal>
+<app-modals [isOpen]="isModalOpen" [modalType]="modalType" (closeModalEvent)="closeModal()"></app-modals>

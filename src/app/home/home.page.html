@@ -1,0 +1,122 @@
+<app-navbar [navbar]="true"></app-navbar>
+<app-rest-api style="width: 500px"></app-rest-api>
+
+<div style="padding: 16px">
+  <!-- створення масиву із заголовків в ts файлі -->
+  <div class="items" style="margin-bottom: 16px">
+    <div *ngFor="let title of itemsTitle">{{title}}</div>
+  </div>
+  <!-- робота над шаблонними формами -->
+  <h1>шаблонні форми</h1>
+  <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)">
+    <!-- привязка полів до форми за допомогою name="name" і ngModel -->
+    <div>Name: <input name="name" ngModel /></div>
+    <div>Age: <input name="age" ngModel /></div>
+    <div>Job: <input name="job" ngModel /></div>
+    <!-- привязка форм до кнопки -->
+    <ion-button type="submit"> Send </ion-button>
+    <!-- очистка по натисканню на кнопку і повинно бути в циклі -->
+    <ion-button (click)="myForm.reset()"> Clear </ion-button>
+  </form>
+
+  <!-- робота з реактивними формами -->
+  <h1>Реактивні форми</h1>
+  <form [formGroup]="reactiveForm" (ngSubmit)="submitForm2()">
+    <div>Name: <input formControlName="name" /></div>
+    <div>Age: <input formControlName="age" /></div>
+    <!-- *ngIf="reactiveForm.invalid" якщо поле не валідне то показує що повинно бути число і це працює тільки коли торкатися поля -->
+    <div
+      *ngIf="reactiveForm.invalid && reactiveForm.touched "
+      style="color: red"
+    >
+      Повинно бути число
+    </div>
+    <div>Job: <input formControlName="job" /></div>
+    <!-- кнопка яка відправляє дані які ввів користувач -->
+    <ion-button [disabled]="reactiveForm.invalid" type="submit">
+      Send
+    </ion-button>
+  </form>
+
+  
+  <!-- додавання активного класу до кнопок по натисканню  -->
+  <div class="buttons" style="margin-bottom: 20px">
+    <ion-button
+      [class.active]="activeButton === 'one' "
+      (click)="setActive('one')"
+      >one</ion-button
+    >
+    <ion-button
+      [class.active]="activeButton === 'two' "
+      (click)="setActive('two')"
+      >two</ion-button
+    >
+  </div>
+</div>
+<!-- тег form i  (ngSubmit)="submitForm3(myForm3)" #myForm3="ngForm" потрібна для відправки даних форми + функція в тс файлі -->
+
+<form
+  (ngSubmit)="submitForm3(myForm3)"
+  #myForm3="ngForm"
+  style="display: flex; flex-direction: column"
+>
+  <!-- Це цикл1. цикл 1 має в собі цикл2 -->
+  <tbody *ngFor="let item of localItems">
+    <tr>
+      <td title="Catecory">
+        <!-- [ngClass]="{'has-error' : Category.invalid}" потрібно щоб накласти стилі на інпут коли поле не валідне | якщо  [ngModel]="item.id"
+         в квадратних дужках і айтем.ід то це двухстороннє звязування -->
+        <input
+          [ngClass]="{'has-error' : Category.invalid}"
+          required
+          #Category="ngModel"
+          name="cat{{item.id}}"
+          [ngModel]="item.id"
+          class="form-control"
+          type="text"
+          style="background-color: white"
+        />
+      </td>
+      <td>
+        <ion-button type="submitForm3" (click)="addCategory()"
+          >Add Category</ion-button
+        >
+        <ion-button (click)="removeCategory(item.id)"
+          >Remove category</ion-button
+        >
+      </td>
+    </tr>
+    <!--Це цикл2. цикл 2 в середині цикла 1 *ngFor="let items of item['items']" -->
+    <tr *ngFor="let items of item['items']">
+      <td title="Sales Tax">
+        <select
+          [ngClass]="{'has-error' : salesTax.invalid}"
+          #salesTax="ngModel"
+          name="salesTax{{items.id}}"
+          [(ngModel)]="items.salesTax"
+          required
+          style="background-color: white"
+          type="text"
+          class="form-control"
+        >
+          <option [ngValue]="null">Select</option>
+          <option *ngFor="let tax of salesTaxArrow" [ngValue]="tax">
+            {{tax.title}}
+          </option>
+        </select>
+        {{items.salesTax?.value | currency}}
+      </td>
+    </tr>
+  </tbody>
+</form>
+
+
+
+
+
+
+
+
+
+
+

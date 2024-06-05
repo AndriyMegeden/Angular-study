@@ -1,0 +1,8 @@
+<app-navbar [navbar]="true"></app-navbar>
+<!-- тут ми створюємо текст який ховається по кліку + правильне розташування через ng-container
+ і спрощений текст заголовків і тем до них в main.settings + main.interface.ts-->
+ <!-- порядок виконання такий: ми підключаємо компонент на сторінку, в компоненті прописуємо логіку і розкручуємо
+ масив (*ngFor="let item of config.items") з файлу main.settings, в text-open.ts прописуємо @Input() config!: QuestionsConfig; в main.interface.ts прописуємо потрібний
+інтерфейс  і в text-page.html прописуємо [config]="questions", в  text-page.ts прописуємо public questions: QuestionsConfig = questions;
+ тому що наш текст знаходиться в ng-container-->
+<app-text-open [config]="questions"></app-text-open>

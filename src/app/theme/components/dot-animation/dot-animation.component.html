@@ -1,0 +1,10 @@
+<div class="navbar" style="width: 100%; height: 64px; background: white;">
+  <div class="punkt-wrap" style="width: 300px;">
+    <div class="container-punkt" style="width: 100px; height: 20px; display: flex; justify-content: center; align-items: center;">
+        <div class="punkt" [@dot]="punktState" (mouseenter)="onMouseEnter1()" >
+          <img class="home" style="display: none;" src="/assets/icon/home.svg" alt="" [@dot]="imgState" (mouseleave)="onMouseLeave1()"> 
+          <div class="background" [@dot]="yellowState"></div>  
+        </div>
+    </div>
+  </div>
+</div>

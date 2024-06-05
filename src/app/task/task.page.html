@@ -1,0 +1,116 @@
+<app-navbar [navbar]="true">
+  <!-- якщо *ngIf="!isAuth" то буде повідомлення що потрібна авторизація
+     і в ts коді   @Input() isAuth: boolean = false; і потрібен AuthService -->
+  <ion-button *ngIf="!isAuth" (click)="auth.login()">login</ion-button>
+  <ion-button (click)="auth.logout()">logout</ion-button>
+</app-navbar>
+
+<h1>Реактивні форми</h1>
+<form [formGroup]="countryCityForm" (ngSubmit)="submitForm()">
+  <div class="input">
+    Name: <input formControlName="name" />
+    <div
+      style="color: red"
+      *ngIf="countryCityForm.get('name')?.invalid && countryCityForm.get('name')?.touched"
+    >
+      Початок з великої літери, не менше 4 букв, не більше 8
+    </div>
+  </div>
+
+  <div class="input">
+    Surname: <input formControlName="surname" />
+    <div
+      style="color: red"
+      *ngIf="countryCityForm.get('surname')?.invalid && countryCityForm.get('surname')?.touched"
+    >
+      Початок з великої літери, не менше 4 букв, не більше 8
+    </div>
+  </div>
+  <div class="input">
+    Email: <input formControlName="email" />
+    <div
+      style="color: red"
+      *ngIf="countryCityForm.get('email')?.invalid && countryCityForm.get('email')?.touched"
+    >
+      Введіть коректну пошту
+    </div>
+  </div>
+  <!-- *ngIf="reactiveForm.invalid" якщо поле не валідне то показує що повинно бути число і це працює тільки коли торкатися поля -->
+
+  <div class="input">
+    <label for="selectedCountry">Оберіть країну:</label>
+    <select
+      id="selectedCountry"
+      formControlName="selectedCountry"
+      (change)="onCountryChange()"
+    >
+      <option
+        *ngFor="let country of countriesWithCities"
+        [value]="country.country"
+      >
+        {{ country.country }}
+      </option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label for="selectedCity">Оберіть місто:</label>
+    <select id="selectedCity" formControlName="selectedCity">
+      <option *ngFor="let city of selectedCountryCities" [value]="city">
+        {{ city }}
+      </option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label for="selectedAdress">Оберіть адресу:</label>
+    <select id="selectedAdress" formControlName="selectedAdress">
+      <option *ngFor="let adress of selectedCountryAdress" [value]="adress">
+        {{ adress }}
+      </option>
+    </select>
+  </div>
+
+  <div class="input">
+    Phone: <input formControlName="phone_number" />
+    <div
+      style="color: red"
+      *ngIf="countryCityForm.get('phone_number')?.invalid && countryCityForm.get('phone_number')?.touched"
+    >
+      Введіть коректний номер телефону з пробілом після коду
+    </div>
+  </div>
+  <div class="input">
+    Password: <input formControlName="password" />
+    <div
+      style="color: red"
+      *ngIf="countryCityForm.get('password')?.invalid && countryCityForm.get('password')?.touched"
+    >
+      Пароль не менше 8 символів
+    </div>
+  </div>
+  <div class="input">
+    New password: <input formControlName="new_password" />
+    <div
+      style="color: red"
+      *ngIf="countryCityForm.get('new_password')?.invalid && countryCityForm.get('new_password')?.touched"
+    >
+      Пароль не менше 8 символів
+    </div>
+  </div>
+  <!-- кнопка яка відправляє дані які ввів користувач -->
+  <ion-button
+    (click)="getData()"
+    [disabled]="countryCityForm.invalid"
+    type="submit"
+  >
+    Send
+  </ion-button>
+</form>
+
+
+  
+
+
+
+

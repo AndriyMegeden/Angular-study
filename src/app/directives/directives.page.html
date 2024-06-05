@@ -1,0 +1,11 @@
+<app-navbar [navbar]="true"></app-navbar>
+
+<!-- передача параметрів в дерективу -->
+<!-- binding потрібен якщо всі типи окрім строки (1 варіант). Якщо строка то binding не потрібен (2 варіант). Але в даному випадку скрізь строка -->
+<div style="margin-top: 30px;" [appStyle]="'red'" fontWeight="bold" [fontSize]="'30px'">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur, itaque!</div>
+
+
+<ion-button (click)="isVisible = !isVisible">toggle</ion-button>
+<div *appIfnot="!isVisible" class="wrap" style="margin: 20px;">
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea fuga commodi velit eius alias exercitationem ullam quod, modi neque consectetur.</p>
+</div>
